@@ -47,6 +47,8 @@ fi
 if [ -z $SIZE ]; then
   echo "Need size of filesystem"
   exit 2
+elif [ 0 -eq 0$SIZE ]; then
+  SIZE=$((`du -sm $SRC_DIR | cut -f1`*11/10))M
 fi
 
 if [ -n "$FC" ]; then
