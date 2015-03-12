@@ -76,6 +76,11 @@ fi
 if [ -z $SIZE ]; then
   echo "Need size of filesystem"
   exit 2
+elif [ 0 -eq 0$SIZE ]; then
+  s=$(du -sm $SRC_DIR | cut -f1)
+  e=$(($s / 10))
+  [ $e -lt 80 ] && e=80
+  SIZE=$(($s + $e))M
 fi
 
 OPT=""
