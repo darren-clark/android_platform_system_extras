@@ -79,7 +79,8 @@ if [ -z $SIZE ]; then
 elif [ 0 -eq 0$SIZE ]; then
   s=$(du -sm $SRC_DIR | cut -f1)
   e=$(($s / 10))
-  [ $e -lt 80 ] && e=80
+  echo $TARGET_PRODUCT | grep -q 64 && l=180 || l=100
+  [ $e -lt $l ] && e=$l
   SIZE=$(($s + $e))M
 fi
 
